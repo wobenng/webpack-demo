@@ -294,7 +294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */]({
     el: '#app',
     data: {
-      message: 'Hello vue!'
+      message: 'Hello Vue!'
     }
   })
 
