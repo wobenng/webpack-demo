@@ -1,9 +1,9 @@
 import bar from './bar';
-import Vue from './node_modules/vue/dist/vue';
+import Vue from 'vue';
 
 var app = new Vue({
     el: '#app',
     data: {
-      message: 'Hello wobenng!'
+      message: 'Hello vue!'
     }
   })
