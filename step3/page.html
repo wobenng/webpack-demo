@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='//at.alicdn.com/t/font_541478_lzgibec33ksp2e29.js'></script>
+    <title>Todo</title>
+    <style>
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .app{
+           padding-top: 50px;
+           width: 100vw;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+        }
+        .app .newTask,
+        .todos{
+            width: 40%;
+        }
+        .app .newTask .input{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            outline: none;
+            padding-left: 5px;
+        }
+        .todos{
+            padding: 20px 0px 20px 20px;
+        }
+        .todos .todoOuter{
+            margin-bottom: 10px;
+        }
+        .todos li{
+            text-align: justify;
+            white-space: pre-line;
+        }
+        .todos p{
+            color: #007acc;
+            text-align: right;
+        }
+        .todos p.true span{
+            color:yellowgreen;
+        }
+        .todos .todoOuter p span{
+            display: inline-block;
+            margin: 0px 20px;
+        }
+        .todos .todoOuter li input[type="checkbox"]{
+            position: absolute;
+            clip: rect(0,0,0,0);
+        }
+        .todos .todoOuter li input[type="checkbox"] + label::before{
+            content: "\a0";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            margin-right: 3px;
+            border-radius: 3px;
+            background: silver;
+            text-align: center;
+        }
+        .todos .todoOuter li input[type="checkbox"]:checked + label::before{
+            content: "\2713";
+            background: yellowgreen;
+        }
+        .todos .todoOuter li input[type="checkbox"]:checked + span{
+            color: yellowgreen;
+        }
+        @media screen and (max-width: 768px){
+            .app .newTask,
+            .todos{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="app">
+        <div class="newTask">
+          <input type="text" class="input" v-model="newTodo" @keypress.enter="addTodo"> 
+        </div>
+        <ol class="todos">
+            <div v-for="item in todoList" class='todoOuter'>
+                <li>
+                    <input type="checkbox"  id='trueOrfalse' v-model="item.done"><label for='trueOrfalse'></label>{{ item.title }}</label>
+                </li>
+                <p v-bind:class="item.done ? 'true' : ''">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shanchu"></use>
+                    </svg><span v-if="item.done" >已完成</span><span v-else>未完成</span>{{ item.createdAt }}</p>
+            </div>
+        </ol>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+</html>
