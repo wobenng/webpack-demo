@@ -8,7 +8,10 @@ var app = new Vue({
     todoList: [],
     allList: [],
     activeList: [],
-    completedList: []
+    completedList: [],
+    optionAll: true,
+    optionActive: false,
+    optionCompleted: false
   },
   created: function(){
     let oldData = JSON.parse(window.localStorage.getItem('hangbinTodos'));
@@ -52,12 +55,21 @@ var app = new Vue({
     },
     allListChecked: function(){
       this.todoList = this.allList;
+      this.optionAll = true;
+      this.optionActive = false;
+      this.optionCompleted = false;
     },
     activeListChecked: function(){
       this.todoList = this.activeList;
+      this.optionAll = false;
+      this.optionActive = true;
+      this.optionCompleted = false;
     },
     completedListChecked: function(){
       this.todoList = this.completedList;
+      this.optionAll = false;
+      this.optionActive = false;
+      this.optionCompleted = true;
     },
     removeInAllList:function(item){
       for(let i = 0;i < this.allList.length; i++){
