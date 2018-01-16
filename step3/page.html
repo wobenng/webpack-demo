@@ -143,14 +143,14 @@
           <input type="text" class="input" v-model="newTodo" @keypress.enter="addTodo"> 
         </div>
         <div class="operating clearfix">
-            <div class="all checked" @click="allListChecked()" >全选</div>
-            <div class='active' @click="activeListChecked()">待完成</div>
-            <div class="completed" @click="completedListChecked()">已完成</div>
+            <div class="all checked" @click="allListChecked" >全选</div>
+            <div class='active' @click="activeListChecked">待完成</div>
+            <div class="completed" @click="completedListChecked">已完成</div>
         </div>
         <ol class="todos">
             <div v-for="item in todoList" class='todoOuter'>
                 <li>
-                    <input type="checkbox"  v-bind:id="'_'+ item.index" v-model="item.done"><label v-bind:for="'_'+ item.index">{{ item.title }}</label>
+                    <input type="checkbox"  v-bind:id="'_'+ item.index" v-model="item.done" @click="didYouFinishIt(item)"><label v-bind:for="'_'+ item.index">{{ item.title }}</label>
                 </li>
                 <p v-bind:class="item.done ? 'true' : ''">
                     <svg class="icon" aria-hidden="true" @click="removeTodo(item)">
