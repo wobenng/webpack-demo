@@ -161,7 +161,7 @@
             </div>
             <div class="signUp" v-if="actionType==='signUp'">
                 <form v-on:submit.prevent="signUp">
-                    <div class="formRow">用户名<input type="text" v-model="formData.username"></div>
+                    <div class="formRow">用户<input type="text" v-model="formData.username"></div>
                     <div class="formRow">密码<input type="password" v-model="formData.password"></div>
                     <div class="formActions"><input type="submit" value="注册"></div>
                 </form>
