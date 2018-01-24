@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/jrg-project-5/resumer/dist',
+    assetsPublicPath: '/webpack-demo/editableResume/dist',
     proxyTable: {},
 
     // Various Dev Server settings
