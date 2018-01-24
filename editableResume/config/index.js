@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/jrg-project-5/resumer/dist',
     proxyTable: {},
 
     // Various Dev Server settings
