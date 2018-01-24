@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/webpack-demo/editableResume/dist',
+    assetsPublicPath: '/webpack-demo/editableResume/dist/index.html',
     proxyTable: {},
 
     // Various Dev Server settings
