@@ -17,7 +17,7 @@ import './assets/reset.css'
 import Topbar from './components/Topbar'
 import ResumeEditor from './components/ResumeEditor'
 import ResumePreview from './components/ResumePreview'
-
+import icons from './assets/icons'
 
 
 export default {
@@ -27,11 +27,14 @@ export default {
       text: '你好'
     }
   },
-  components: {Topbar, ResumeEditor, ResumePreview}
+  components: {Topbar, ResumeEditor, ResumePreview},
+  created(){
+     document.body.insertAdjacentHTML('afterbegin', icons) 
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 .page{
   height: 100vh;
   display: flex;
@@ -58,5 +61,12 @@ export default {
   flex-grow: 1;
   margin-left: 16px;
   background: #777;
+}
+svg.icon{
+  height: 1em;
+  width: 1em;
+  fill: white;
+  vertical-align: -0.1em;
+  font-size:16px;
 }
 </style>
