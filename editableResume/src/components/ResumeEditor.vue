@@ -31,47 +31,17 @@
 <script>
 export default {
     name: 'ResumeEditor',
-    data() {
-      return {
-        selected: 'profile',
-        resume: {
-          config: [
-            { field: 'profile', icon: 'id' },
-            { field: 'work history', icon: 'work' },
-            { field: 'education', icon: 'book' },
-            { field: 'projects', icon: 'heart' },
-            { field: 'awards', icon: 'cup' },
-            { field: 'contacts', icon: 'phone' },
-          ],
-          profile: {
-            '姓名': '',
-            '城市': '',
-            '应聘职位': ''
-          },
-          'work history': [
-            { '公司': '最近一份工作单位', '职位': '' },
-            { '公司': '最近一份工作单位', '职位': '' },
-          ],
-          education: [
-             {'毕业学校': ''},
-             {'参加活动一': '','参加活动二': '','参加活动三': ''}
-          ],
-          projects: [
-            { '项目一名称': '', '项目一描述': '' },
-            { '项目二名称': '', '项目二描述': '' },
-            { '项目三名称': '', '项目三描述': '' },
-          ],
-          awards: [
-            { '获得奖项': '', '时间': '2018-1-25' },
-            { '获得奖项': '', '时间': '2018-1-25' },
-            { '获得奖项': '', '时间': '2018-1-25' }
-          ],
-          contacts: { 
-            '联系方式': '',
-            '邮箱':'',
-            'QQ':''
-            },
+    computed: {
+      selected:{
+        get(){
+          return this.$store.state.selected
+        },
+        set(value){
+          return this.$store.commit('switchTab', value)
         }
+      },
+      resume (){
+        return this.$store.state.resume
       }
     }
   }
