@@ -12,16 +12,16 @@
     <ol class="panels">
       <li v-for="item in resume.config" v-show="item.field === selected">
         <div v-if="resume[item.field] instanceof Array">
-          <div class="subitem" v-for="subitem in resume[item.field]">
+          <div class="subitem" v-for="(subitem,index) in resume[item.field]">
             <div class="resumeField" v-for="(value,key) in subitem">
               <label> {{key}} </label>
-              <input type="text" v-model="subitem[key]">
+              <input type="text" :value="value" @input="changeResumeField(`${item.field}.${index}.${key}`, $event.target.value)">
             </div>
           </div>
         </div>
         <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
           <label> {{key}} </label>
-          <input type="text" v-model="resume[item.field][key]">
+          <input type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`, $event.target.value)">
         </div>
       </li>
     </ol>
@@ -42,6 +42,14 @@ export default {
       },
       resume (){
         return this.$store.state.resume
+      }
+    },
+     methods: {
+      changeResumeField(path, value){
+        this.$store.commit('updateResume',{
+          path,
+          value
+        })
       }
     }
   }

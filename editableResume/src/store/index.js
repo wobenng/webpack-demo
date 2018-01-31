@@ -1,11 +1,16 @@
 import Vuex from 'vuex'
- import Vue from 'vue' 
+import Vue from 'vue' 
+import objectPath from "object-path"
 
  Vue.use(Vuex) 
  
  export default new Vuex.Store({
   state: {
     selected: 'profile',
+    user: {
+      id: '',
+      username: ''
+    },
     resume: {
       config: [
         { field: 'profile', icon: 'id' },
@@ -31,7 +36,7 @@ import Vuex from 'vuex'
          {'毕业学校': '理工','毕业时间': '2016'}
       ],
       projects: [
-        { '项目名称': '', '项目描述': '' },
+        { '项目名称': '', '项目描述': '' }, //subitem
         { '项目名称': '', '项目描述': '' },
         { '项目名称': '', '项目描述': '' },
       ],
@@ -48,8 +53,22 @@ import Vuex from 'vuex'
     }
 },
 mutations: {
+  initState(state, payload){
+    Object.assign(state, payload)
+  },
   switchTab (state, payload){
-    state.selected = payload 
+    state.selected = payload
+    localStorage.setItem('state', JSON.stringify(state))
+  },
+  updateResume(state, {path, value}){
+    objectPath.set(state.resume, path, value)
+    localStorage.setItem('state', JSON.stringify(state))
+  },
+  setUser(state, payload){
+    Object.assign(state.user, payload)
+  },
+  removeUser(state){
+    state.user.id = ''
   }
 }
 })
