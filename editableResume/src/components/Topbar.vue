@@ -58,7 +58,6 @@ export default {
     signOut(){
       AV.User.logOut()
       this.$store.commit('removeUser')
-      console.log(1)
     },
 
   }
